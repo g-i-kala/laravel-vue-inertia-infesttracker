@@ -15,14 +15,10 @@ import {
     <MenubarMenu>
       <MenubarTrigger>ETF</MenubarTrigger>
       <MenubarContent>
-        <MenubarItem>
-          New Tab <MenubarShortcut>⌘T</MenubarShortcut>
+        <MenubarItem :as="'a'" href="/wallet/etf">
+          Overview
         </MenubarItem>
-        <MenubarItem>New Window</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Share</MenubarItem>
-        <MenubarSeparator />
-        <MenubarItem>Print</MenubarItem>
+        
       </MenubarContent>      
     </MenubarMenu>
   <MenubarMenu>

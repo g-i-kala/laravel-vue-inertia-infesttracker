@@ -4,7 +4,8 @@ import AppLayout from '@/layouts/AppLayout.vue';
 import { dashboard } from '@/routes';
 import { type BreadcrumbItem } from '@/types';
 import { Head } from '@inertiajs/vue3';
-import WalletMenubar from './WalletMenubar.vue';
+import WalletLayout from '../../layouts/wallet/WalletLayout.vue';
+defineOptions({layout: WalletLayout});
 
 
 const breadcrumbs: BreadcrumbItem[] = [
@@ -16,22 +17,6 @@ const breadcrumbs: BreadcrumbItem[] = [
 </script>
 
 <template>
-    <Head title="Dashboard" />
-
-    <AppLayout :breadcrumbs="breadcrumbs">
-        <div
-            class="flex h-full flex-1 flex-col gap-4 overflow-x-auto rounded-xl p-4"
-        ><div
-                class="relative flex rounded-xl border border-sidebar-border/70 dark:border-sidebar-border"
-            >
-                <WalletMenubar />
-            </div>
-            
-            <div
-                class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 md:min-h-min dark:border-sidebar-border"
-            >
-                <PlaceholderPattern />
-            </div>
-        </div>
-    </AppLayout>
+  <h1 class="text-2xl font-semibold mb-4">Wallet Overview</h1>
+  <p>This is the main wallet dashboard.</p>
 </template>

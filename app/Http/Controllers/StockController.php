@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreWalletRequest;
-use App\Http\Requests\UpdateWalletRequest;
-use App\Models\Wallet;
-use Inertia\Inertia;
+use App\Http\Requests\StoreStockRequest;
+use App\Http\Requests\UpdateStockRequest;
+use App\Models\Stock;
 
-class WalletController extends Controller
+class StockController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('wallet/Index');
+        //
     }
 
     /**
@@ -28,7 +27,7 @@ class WalletController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreWalletRequest $request)
+    public function store(StoreStockRequest $request)
     {
         //
     }
@@ -36,15 +35,15 @@ class WalletController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Wallet $wallet)
+    public function show(Stock $stock)
     {
-        return dd('wallet.show');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Wallet $wallet)
+    public function edit(Stock $stock)
     {
         //
     }
@@ -52,7 +51,7 @@ class WalletController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateWalletRequest $request, Wallet $wallet)
+    public function update(UpdateStockRequest $request, Stock $stock)
     {
         //
     }
@@ -60,7 +59,7 @@ class WalletController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Wallet $wallet)
+    public function destroy(Stock $stock)
     {
         //
     }

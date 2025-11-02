@@ -17,6 +17,8 @@ const breadcrumbs: BreadcrumbItem[] = [
 </script>
 
 <template>
-  <h1 class="text-2xl font-semibold mb-4">Wallet Overview</h1>
-  <p>This is the main wallet dashboard.</p>
+<div class="m-4">  
+    <h1 class="text-2xl font-semibold mb-4">Wallet Overview</h1>
+    <p>This is the main wallet dashboard.</p>
+</div>
 </template>

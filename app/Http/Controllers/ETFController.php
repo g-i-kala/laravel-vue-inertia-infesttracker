@@ -19,9 +19,24 @@ class ETFController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Fetch data from db my_e_t_e_f_s list
      */
-    public function create()
+    public function myETFs()
+    {
+        //
+    }
+    /**
+     * Add an etf to my list.
+     */
+    public function addETF($ticker)
+    {
+        //
+    }
+
+    /**
+     * Remoeve an etf to my list.
+     */
+    public function removeETF($ticker)
     {
         //
     }

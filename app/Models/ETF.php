@@ -9,4 +9,6 @@ class ETF extends Model
 {
     /** @use HasFactory<\Database\Factories\ETFFactory> */
     use HasFactory;
+
+    protected $fillable = ['ticker'];
 }

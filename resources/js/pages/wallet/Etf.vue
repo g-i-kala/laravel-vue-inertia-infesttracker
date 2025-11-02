@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import { useForm } from '@inertiajs/vue3'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import {
@@ -15,15 +16,22 @@ import WalletLayout from '../../layouts/wallet/WalletLayout.vue'
 
 defineOptions({ layout: WalletLayout })
 
-const newTicker = ref('')
+const form = useForm({
+  ticker: ''
+})
+
 const etfs = ref([])
 
 function addEtf() {
-  if (!newTicker.value.trim()) return
-  etfs.value.push({
-    ticker: newTicker.value.toUpperCase()
+  if (!form.ticker.trim()) return
+  form.post(('/wallet/etf'), {
+    onSuccess: () => {
+      etfs.value.push({
+        ticker: form.ticker.toUpperCase()
+      })
+      form.reset()
+    }
   })
-  newTicker.value = ''
 }
 </script>
 
@@ -42,11 +50,13 @@ function addEtf() {
         <div class="flex gap-2 mt-2">
           <Input
             id="etfTicker"
-            v-model="newTicker"
+            v-model="form.ticker"
             type="text"
             placeholder="What's the ticker?"
           />
-          <Button @click="addEtf">Add +</Button>
+          <Button @click="addEtf" :disabled="form.processing">
+            Add +
+          </Button>
         </div>
       </label>
     </div>

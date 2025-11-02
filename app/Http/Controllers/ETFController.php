@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\ETF;
 use Inertia\Inertia;
+use App\Models\myETF;
 use App\Models\Wallet;
+use Illuminate\Http\Request;
 use App\Http\Requests\StoreETFRequest;
 use App\Http\Requests\UpdateETFRequest;
 
@@ -19,34 +21,22 @@ class ETFController extends Controller
     }
 
     /**
-     * Fetch data from db my_e_t_e_f_s list
+     * Show the form for creating a new resource.
      */
-    public function myETFs()
-    {
-        //
-    }
-    /**
-     * Add an etf to my list.
-     */
-    public function addETF($ticker)
+    public function create()
     {
         //
     }
 
     /**
-     * Remoeve an etf to my list.
+     * Store an my etf ticker to db.
      */
-    public function removeETF($ticker)
+    public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(StoreETFRequest $request)
-    {
-        //
+        $etf = myETF::create([
+            'ticker' => $request->input('ticker'),
+        ]);
+        return back()->with('success', 'ETF added!');
     }
 
     /**

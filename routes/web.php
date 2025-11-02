@@ -20,6 +20,7 @@ Route::middleware('auth')->prefix('wallet')->group(function () {
     Route::get('/', [WalletController::class, 'index'])->name('wallet.index');
     //Route::get('/{wallet}', [WalletController::class, 'show'])->name('wallet.show');
     Route::get('/etf', [ETFController::class, 'index'])->name('wallet.etf.index');
+    Route::post('/etf', [ETFController::class, 'store'])->name('wallet.etf.store');
 });
 
 require __DIR__.'/settings.php';

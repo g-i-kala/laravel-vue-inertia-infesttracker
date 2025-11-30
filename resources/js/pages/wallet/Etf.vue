@@ -32,6 +32,12 @@ function addEtf() {
       form.reset()
     }
   })
+}const props = defineProps({
+  etfs: Array
+});
+
+function justDate(fullDate) {
+  return fullDate ? fullDate.split('T')[0] : '';
 }
 </script>
 
@@ -60,7 +66,6 @@ function addEtf() {
         </div>
       </label>
     </div>
-
     <!-- ETF list -->
     <div class="my-4 rounded-xl border border-gray-200 p-4">
       <Table>
@@ -81,9 +86,9 @@ function addEtf() {
           </TableRow>
         </TableHeader>
         <TableBody>
-          <TableRow v-for="(etf, index) in etfs" :key="index">
-            <TableCell>{{ etf.ticker }}</TableCell>
-            <TableCell>{{ etf.addedAt }}</TableCell>
+          <TableRow v-for="(etfs, index) in props.etfs" :key="index">
+            <TableCell>{{ etfs.ticker }}</TableCell>
+            <TableCell>{{ justDate(etfs.created_at) }}</TableCell>
           </TableRow>
           <TableRow v-if="!etfs.length">
             <TableCell colspan="2" class="text-gray-400">

@@ -17,7 +17,10 @@ class ETFController extends Controller
      */
     public function index()
     {
-        return Inertia::render('wallet/Etf');
+
+        return Inertia::render('wallet/Etf', [
+            'etfs' => myETF::all(),
+        ]);
     }
 
     /**
@@ -33,7 +36,10 @@ class ETFController extends Controller
      */
     public function store(Request $request)
     {
-        $etf = myETF::create([
+        $request->validate([
+            'ticker' => 'required|string|max:10',
+        ]);
+        myETF::create([
             'ticker' => $request->input('ticker'),
         ]);
         return back()->with('success', 'ETF added!');

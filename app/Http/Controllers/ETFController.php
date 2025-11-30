@@ -9,17 +9,25 @@ use App\Models\Wallet;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreETFRequest;
 use App\Http\Requests\UpdateETFRequest;
+use App\Services\YahooService;
+use Scheb\YahooFinanceApi\ApiClientFactory;
 
 class ETFController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(YahooService $yahooService)
     {
+        $myEtfs = MyEtf::all(); // only one user, so no filter needed
+
+        $enriched = $myEtfs->map(function ($etf) use ($yahooService) {
+            $data = $yahooService->getQuoteCached($etf);
+            return array_merge(['ticker' => $etf->ticker], $data);
+        });
 
         return Inertia::render('wallet/Etf', [
-            'etfs' => myETF::all(),
+            'etfs' => $enriched,
         ]);
     }
 
